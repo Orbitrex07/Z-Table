@@ -138,22 +138,22 @@ export class NormalCurveCanvas {
 
     const isDark = this.options.theme === 'dark';
 
-    // Color tokens
+    // Color tokens - Calm, non-glaring academic palette
     const colors = {
-      bg: isDark ? '#0f172a' : '#ffffff',
-      curveStroke: '#38bdf8', // Vibrant cyan/sky
-      grid: isDark ? 'rgba(148, 163, 184, 0.12)' : 'rgba(148, 163, 184, 0.25)',
-      axis: isDark ? '#475569' : '#94a3b8',
+      bg: isDark ? '#141822' : '#ffffff',
+      curveStroke: isDark ? '#5b8bf7' : '#2563eb', // Balanced blue
+      grid: isDark ? 'rgba(148, 163, 184, 0.08)' : 'rgba(148, 163, 184, 0.18)',
+      axis: isDark ? '#3b4559' : '#cbd5e1',
       textPrimary: isDark ? '#f1f5f9' : '#0f172a',
-      textMuted: isDark ? '#94a3b8' : '#64748b',
-      meanLine: isDark ? '#f59e0b' : '#d97706', // Amber mean
-      markerLine: '#818cf8', // Indigo/violet
-      primaryShadeStart: 'rgba(56, 189, 248, 0.48)',
-      primaryShadeEnd: 'rgba(99, 102, 241, 0.18)',
-      secondaryShadeStart: 'rgba(236, 72, 153, 0.45)',
-      secondaryShadeEnd: 'rgba(244, 63, 94, 0.15)',
-      activeMarker: '#06b6d4',
-      badgeBg: isDark ? '#1e293b' : '#e2e8f0',
+      textMuted: isDark ? '#8a99ad' : '#64748b',
+      meanLine: isDark ? '#cbd5e1' : '#475569',
+      markerLine: isDark ? '#60a5fa' : '#3b82f6',
+      primaryShadeStart: isDark ? 'rgba(91, 139, 247, 0.28)' : 'rgba(37, 99, 235, 0.20)',
+      primaryShadeEnd: isDark ? 'rgba(91, 139, 247, 0.06)' : 'rgba(37, 99, 235, 0.04)',
+      secondaryShadeStart: isDark ? 'rgba(148, 163, 184, 0.22)' : 'rgba(100, 116, 139, 0.18)',
+      secondaryShadeEnd: isDark ? 'rgba(148, 163, 184, 0.05)' : 'rgba(100, 116, 139, 0.04)',
+      activeMarker: isDark ? '#5b8bf7' : '#2563eb',
+      badgeBg: isDark ? '#1d2331' : '#f1f5f9',
     };
 
     // 1. Draw Grid lines & Sigma markers
@@ -255,14 +255,11 @@ export class NormalCurveCanvas {
       else ctx.lineTo(px, py);
     }
 
-    // Outer glow
-    ctx.shadowColor = colors.curveStroke;
-    ctx.shadowBlur = 6;
+    // Clean matte mathematical stroke with no shiny glow
+    ctx.shadowBlur = 0;
     ctx.strokeStyle = colors.curveStroke;
-    ctx.lineWidth = 2.5;
+    ctx.lineWidth = 2.0;
     ctx.stroke();
-
-    ctx.shadowBlur = 0; // Reset
   }
 
   drawShadedRegions(colors) {
