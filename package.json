@@ -1,0 +1,17 @@
+{
+  "name": "z-table-normal-distribution",
+  "version": "1.0.0",
+  "description": "Interactive Statistical Analysis Tool for Standard Normal Distribution N(0, 1) — Z-Score, Tail Probabilities, Interactive Bell Curve, and 2D Z-Table Matrix.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test tests/normalDistribution.test.js tests/zTableEngine.test.js tests/calculatorEngine.test.js",
+    "deploy": "npx vercel"
+  },
+  "devDependencies": {
+    "vite": "^8.3.0"
+  }
+}
